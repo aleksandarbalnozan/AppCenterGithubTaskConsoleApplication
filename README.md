@@ -7,7 +7,9 @@ git clone https://github.com/aleksandarbalnozan/AppCenterGithubTaskConsoleApplic
 - Overall this project prints all available branches and trigger build on every available branch printing its status every 125s
 
 # **How to execute the code**
-in the root folder of the application execute following code:
+ **NOTE**
+ - To run the `dotnet build/run` the .NET SDK is required
+- in the root folder of the application execute following code:
 ```
 dotnet build
 ```
@@ -23,6 +25,10 @@ which will execute the application
 # **Technologies used:**
 - .NET 5
 - AppCenter
+
+# **Required tools to run this application:**
+- .NET CLI ([Download SDK](https://dotnet.microsoft.com/en-us/download/dotnet/5.0))
+- .NET 5 Runtime ([Download runtime](https://dotnet.microsoft.com/en-us/download/dotnet/5.0))
 
 # **TODO:**
 - Implementing Unit-tests
