@@ -9,6 +9,11 @@ git clone https://github.com/aleksandarbalnozan/AppCenterGithubTaskConsoleApplic
 # **How to execute the code**
  **NOTE**
  - To run the `dotnet build/run` the .NET SDK is required
+ - Steps to execute project with PowerShell:
+1. Open powershell
+2. CD into root directory
+3. Run init.ps1 script
+
 - in the root folder of the application execute following code:
 ```
 dotnet build
