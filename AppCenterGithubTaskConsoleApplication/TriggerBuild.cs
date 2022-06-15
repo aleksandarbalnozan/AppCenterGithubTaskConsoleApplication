@@ -44,7 +44,6 @@ namespace AppCenterGithubTaskConsoleApplication
                 using (var client = new HttpClient())
                 {
                     client.DefaultRequestHeaders.Accept.Clear();
-                    //_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     client.DefaultRequestHeaders.Add(header, token);
 
                     string url = string.Format(
