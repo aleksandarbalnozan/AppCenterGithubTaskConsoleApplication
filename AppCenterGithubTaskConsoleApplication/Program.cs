@@ -33,8 +33,9 @@ namespace AppCenterGithubTaskConsoleApplication
             // Print branches where the build is being triggered
             foreach (var branch in branches)
             {
-                Console.WriteLine("Triggering build for {0}", branch.branch.name);
+                Console.WriteLine("Triggering build for {0} ..", branch.branch.name);
                 await triggerBuild.CreateBuildAsync(header, token, branch.branch.name, branch.branch.commit.sha);
+                Console.WriteLine("Build for {0} triggered ..", branch.branch.name);
             }
 
             var getTriggeredBuildStatus = new GetTriggeredBuild();
@@ -49,10 +50,11 @@ namespace AppCenterGithubTaskConsoleApplication
                 {
                     var triggeredBuildStatus = await getTriggeredBuildStatus.GetBuildStatusesAsync(header, token, branch.branch.name);
 
-
                     string buildUrl = string
                         .Format("https://appcenter.ms/users/balnozan-aleksandar/apps/AppCenter-Xamarin-GithubTask/build/branches/{0}/builds/{1}",
                         branch.branch.name, triggeredBuildStatus.id);
+
+                    Console.WriteLine("{0} build {1} in 125s. Link to build logs: {2}", branch.branch.name, triggeredBuildStatus.status, buildUrl);
 
                     if (triggeredBuildStatus.status == "completed" || triggeredBuildStatus.status == "failed" || triggeredBuildStatus.status == "canceled")
                     {
@@ -60,11 +62,10 @@ namespace AppCenterGithubTaskConsoleApplication
                     }
                     else
                     {
+                        Console.WriteLine("Retrying in 125s ..");
                         // sleep for 125s
                         Thread.Sleep(125000);
                     }
-
-                    Console.WriteLine("{0} build {1} in 125s. Link to build logs: {2}", branch.branch.name, triggeredBuildStatus.status, buildUrl);
                 }
             }
 
