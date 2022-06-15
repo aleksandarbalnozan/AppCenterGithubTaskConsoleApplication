@@ -20,6 +20,11 @@ dotnet run
 ```
 which will execute the application
 
-# **Technologies used**:
+# **Technologies used:**
 - .NET 5
 - AppCenter
+
+# **TODO:**
+- Implementing Unit-tests
+- Objects cleanup
+- Furter code improvments
