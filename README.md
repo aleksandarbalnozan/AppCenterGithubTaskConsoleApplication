@@ -15,6 +15,8 @@ Run init.ps1 script to build the code and run unit tests:
 1. Open powershell 
 2. CD into root directory 
 3. Run ./init.ps1 
+4. dotnet run --project .\AppCenterGithubTaskConsoleApplication\
+
 
 # **Required tools to run this application:**
 - .NET CLI ([Download SDK](https://dotnet.microsoft.com/en-us/download/dotnet/5.0))
