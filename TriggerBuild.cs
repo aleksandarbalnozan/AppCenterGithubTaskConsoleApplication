@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AppCenterGithubTaskConsoleApplication
 {
-    public class TriggerBuild
+    public class TriggerBuild : ITriggerBuild
     {
         /// <summary>
         /// Creates a build by the branch name and the last commit
@@ -23,7 +23,7 @@ namespace AppCenterGithubTaskConsoleApplication
         /// <param name="ownerName"></param>
         /// <param name="appName"></param>
         /// <returns></returns>
-        public static async Task<TriggerBuildDto> CreateBuildAsync(string header, string token, string branchName,
+        public async Task CreateBuildAsync(string header, string token, string branchName,
             string commitId, string ownerName = "balnozan-aleksandar", string appName = "AppCenter-Xamarin-GithubTask")
         {
             var rootObject = new Rootobject
@@ -58,16 +58,6 @@ namespace AppCenterGithubTaskConsoleApplication
                     var result = await client.PostAsync(url, requestContent);
 
                     result.EnsureSuccessStatusCode();
-
-                    var content = await result.Content.ReadAsStringAsync();
-                    var createdBuild = JsonSerializer.Deserialize<TriggerBuildDto>(content);
-
-                    if (createdBuild is null)
-                    {
-                        throw new ArgumentException("There are no available branches", nameof(createdBuild));
-                    }
-
-                    return createdBuild;
                 }
             }
             catch (Exception)

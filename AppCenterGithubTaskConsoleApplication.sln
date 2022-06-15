@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCenterGithubTaskConsoleApplication", "AppCenterGithubTaskConsoleApplication.csproj", "{BC50D24B-2245-4580-A9EC-E2DE773259C0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppCenterGithubTaskConsoleApplication.Test", "..\AppCenterGithubTaskConsoleApplication.Test\AppCenterGithubTaskConsoleApplication.Test.csproj", "{3825CC37-F000-4764-8A70-1570843AEE66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BC50D24B-2245-4580-A9EC-E2DE773259C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC50D24B-2245-4580-A9EC-E2DE773259C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC50D24B-2245-4580-A9EC-E2DE773259C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3825CC37-F000-4764-8A70-1570843AEE66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3825CC37-F000-4764-8A70-1570843AEE66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3825CC37-F000-4764-8A70-1570843AEE66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3825CC37-F000-4764-8A70-1570843AEE66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

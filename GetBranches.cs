@@ -10,10 +10,8 @@ using System.Threading.Tasks;
 
 namespace AppCenterGithubTaskConsoleApplication
 {
-    public class GetBranches
+    public class GetBranches : IGetBranches
     {
-        private static readonly HttpClient _client = new HttpClient();
-
         /// <summary>
         /// Gets all branches async
         /// </summary>
@@ -22,26 +20,30 @@ namespace AppCenterGithubTaskConsoleApplication
         /// <param name="ownerName">Owner name</param>
         /// <param name="appName">App name</param>
         /// <returns>A <see cref="List{string}" </returns>
-        public static async Task<List<Rootobject>> GetBranchesAsync(string header, string token,
-            string ownerName = "balnozan-aleksandar", string appName= "AppCenter-Xamarin-GithubTask")
+        public async Task<List<Rootobject>> GetBranchesAsync(string header, string token,
+            string ownerName = "balnozan-aleksandar", string appName = "AppCenter-Xamarin-GithubTask")
         {
+
             try
             {
-                _client.DefaultRequestHeaders.Accept.Clear();
-                _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                _client.DefaultRequestHeaders.Add(header, token);
-
-                string url = string.Format("https://api.appcenter.ms/v0.1/apps/{0}/{1}/branches", ownerName, appName);
-                var result = await _client.GetStreamAsync(url);
-
-                var branches = await JsonSerializer.DeserializeAsync<List<Rootobject>>(result);
-
-                if (branches is null)
+                using (var client = new HttpClient())
                 {
-                    throw new ArgumentException("There are no available branches", nameof(branches));
-                }
+                    client.DefaultRequestHeaders.Accept.Clear();
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    client.DefaultRequestHeaders.Add(header, token);
 
-                return branches;
+                    string url = string.Format("https://api.appcenter.ms/v0.1/apps/{0}/{1}/branches", ownerName, appName);
+                    var result = await client.GetStreamAsync(url);
+
+                    var branches = await JsonSerializer.DeserializeAsync<List<Rootobject>>(result);
+
+                    if (branches is null)
+                    {
+                        throw new ArgumentException("There are no available branches", nameof(branches));
+                    }
+
+                    return branches;
+                }
             }
             catch (Exception)
             {

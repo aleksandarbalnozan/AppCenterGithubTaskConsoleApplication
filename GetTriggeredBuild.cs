@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace AppCenterGithubTaskConsoleApplication
 {
-    public class GetTriggeredBuild
+    public class GetTriggeredBuild : IGetTriggeredBuild
     {
         //private static readonly HttpClient _client;
         public static bool _isStatusCompleted = false;

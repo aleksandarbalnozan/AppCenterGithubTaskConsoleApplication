@@ -13,12 +13,14 @@ namespace AppCenterGithubTaskConsoleApplication
     {
         static async Task Main(string[] args)
         {
-            // retrieving the secrets stored in environmnet 
-            var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-            var header = config["header"];
-            var token = config["token"];
+            // Get Secrets
+            var userSecrets = new GetSecrets();
+            string header = userSecrets.Header;
+            var token = userSecrets.Token;
 
-            var branches = await GetBranches.GetBranchesAsync(header, token);
+            // Instanciate the GetBranches cobject
+            var getBranches = new GetBranches();
+            var branches = await getBranches.GetBranchesAsync(header, token);
 
             // print all branches
             foreach (var branch in branches)
@@ -26,11 +28,13 @@ namespace AppCenterGithubTaskConsoleApplication
                 Console.WriteLine("Available branch: {0}", branch.branch.name);
             }
 
+            var triggerBuild = new TriggerBuild();
+
             // Print branches where the build is being triggered
             foreach (var branch in branches)
             {
                 Console.WriteLine("Triggering build for {0}", branch.branch.name);
-                await TriggerBuild.CreateBuildAsync(header, token, branch.branch.name, branch.branch.commit.sha);
+                await triggerBuild.CreateBuildAsync(header, token, branch.branch.name, branch.branch.commit.sha);
             }
 
             var getTriggeredBuildStatus = new GetTriggeredBuild();
