@@ -27,10 +27,6 @@ dotnet run
 ```
 which will execute the application
 
-# **Technologies used:**
-- .NET 5
-- AppCenter
-
 # **Required tools to run this application:**
 - .NET CLI ([Download SDK](https://dotnet.microsoft.com/en-us/download/dotnet/5.0))
 - .NET 5 Runtime ([Download runtime](https://dotnet.microsoft.com/en-us/download/dotnet/5.0))
