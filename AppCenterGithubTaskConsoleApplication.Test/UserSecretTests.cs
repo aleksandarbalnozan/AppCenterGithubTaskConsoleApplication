@@ -6,7 +6,7 @@ using Xunit;
 
 namespace AppCenterGithubTaskConsoleApplication.Test
 {
-    public class UnitTest1
+    public class UserSecretTests
     {
         [Fact]
         public void TestFileExist_WithCurrentFileLocation_ReturnsTrue()
@@ -19,10 +19,10 @@ namespace AppCenterGithubTaskConsoleApplication.Test
         [Fact]
         public void TestPropertyNotNull_WithCurrentFileLocation_ReturnTrue()
         {
-            var secrets = JsonConvert.DeserializeObject<UserSecrets>(File.ReadAllText(string.Concat(AppDomain.CurrentDomain.BaseDirectory, "secrets.json")));
+            var getSecrets = new GetSecrets();
 
-            Assert.True(!String.IsNullOrEmpty(secrets.Header));
-            Assert.True(!String.IsNullOrEmpty(secrets.Token));
+            Assert.True(!String.IsNullOrEmpty(getSecrets.Header));
+            Assert.True(!String.IsNullOrEmpty(getSecrets.Token));
         }
     }
 }
